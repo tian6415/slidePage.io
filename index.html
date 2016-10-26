@@ -44,10 +44,13 @@ function preLoadImg() {
 
 function carousel() {
     var i;
-    var length = 20;
+    var length = imgName.length;
     var x = document.getElementsByClassName("mySlides");
     myIndex++;
-    if (myIndex > length) {myIndex = 1}
+    if (myIndex >= length) {
+      myIndex = 0;
+      location.reload();
+    }
     x[0].style.display = "block";
     x[0].src = './img/' + imgName[myIndex];
     setTimeout(carousel, 2000); // Change image every 2 seconds
