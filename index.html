@@ -5,56 +5,87 @@
 <body>
 
 <div class="picture">
-  <img class="mySlides"/>
+  <img id="img1" class="mySlides"/>
+  <img id="img2" class="mySlides"/>
 </div>
 
 <style>
-	html,body{  
-  		height:100%;  
-  		margin:0px;  
-	}  
-  
+  html,body{  
+      height:100%;  
+      margin:0px;  
+  }
   .picture {  
       background-color: #000000;  
       height:100%;  
       width:100%;
       font-size: .85em;  
+      text-align: center;
   }
   .mySlides {
     height:100%;
-    margin: auto;
-
-  }  
+    position: absolute;
+    display: block;
+    margin: 0 auto;
+    -webkit-transition: opacity 1s linear;
+    -moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    transition: opacity 1s linear;
+    opacity:0;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+  .fadeIn {
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
 </style>
 
 <script>
 var myIndex = 0;
-var imgName = ['1 (2).jpg','1.pic_hd.jpg','10.pic.jpg','2.pic_hd.jpg','2016-08-12 155100.jpg','23.pic.jpg','24660907081_8a89a3dcfb_o.jpg','4.pic_hd.jpg','43.pic_hd.jpg','5.pic_hd.jpg','6.pic_hd.jpg','9.pic.jpg','94.pic_hd.jpg','_DSC3124.JPG','_DSC3359.JPG','_DSC3633.JPG','_DSC3842.JPG','_DSC3857.JPG','_DSC4493.JPG','_MG_0319.JPG','ada zhong868555635237775571.jpeg','ATT00001.txt','D61_2261.jpg','D61_2575.jpg','D61_2898.jpg','D61_3987.jpg','D61_4219.jpg','diannan1.jpg','diannan2.jpg','DSC03520[2].JPG','DSC_0257.JPG','DSC_0392.JPG','DSC_4475.jpg','FullSizeRender 2.jpg','FullSizeRender 3.jpg','FullSizeRender 4.jpg','FullSizeRender.jpg','FullSizeRenderj.jpg','Hang.jpeg','helen_li.jpeg','huimin-1.jpg','image1.jpeg','image1.JPG','image2.JPG','image3.JPG','IMG_0091.JPG','IMG_0146.JPG','IMG_0636.jpeg','IMG_1340.JPG','IMG_1399.jpg','IMG_1457.JPG','IMG_1458.JPG','IMG_1573.JPG','IMG_2742.JPG','IMG_2853.JPG','IMG_3020.jpg','IMG_3070.JPG','IMG_3532.JPG','IMG_4783.JPG','IMG_5205.JPG','IMG_5209.JPG','IMG_5212.JPG','IMG_5214.JPG','IMG_5217.JPG','IMG_5333[6].JPG','IMG_6712.JPG','IMG_7477.png','IMG_8560.jpg','IMG_8986.JPG','IMG_9423.JPG','IMG_9425.JPG','IMG_9884.JPG','IMG_9987.JPG','jeffery－weilv.jpeg','jin.jpeg','P1050687.jpeg','partick zhang.jpeg','partick zhang2.jpeg','psb.jpg','tiantian.jpeg','Victor Zhang.jpeg','Violin[2].jpg','zhenLi20160714131345.jpeg','zhifen.jpeg','侯隽.jpeg','侯隽2.jpeg','李贞_照片.jpeg','照片IMG_9418.JPG','照片IMG_9422.JPG'];
-
-preLoadImg();
-
-carousel();
-
+var imgTags = [
+    document.getElementById('img1'),
+    document.getElementById('img2'),
+];
+var imgName = ['slide_b9bbf34d73a2e1f475199e201d0d81d1.jpg','slide_514dc7eb8251253162ac78422cc064ec.jpg','slide_52bf76ddffaef9bac64a96b7ae63ee43.jpg','slide_c4c0ad57fa3eb6a5805308275e62d77d.jpg','slide_40668a5cd3c80f27a3fdf7e8c6976e05.jpg','slide_bb4a093a13408faeb307cd5991d9b0d7.jpg','slide_2c297ebee66880d875e379573fb9066d.jpg','slide_7438b645fff2b9bed8f93a922959b464.jpg','slide_02c358884f218650b81bfb68b132a426.jpg','slide_035c89840982820460b758718207bd40.jpg','slide_06bdfa688e8a864df1420c558a5854eb.jpg','slide_0a5d62ba6dbc5f1bed6b48b0bf83b24b.jpg','slide_0d21deceb2fd94fa5bb6306b39b77744.jpg','slide_11ae9bc7d8cd45d8037a871118e8bf01.jpg','slide_13f0b2c0400e9d197661febeab9ef32a.jpg','slide_220a98a4ddc9eff9c7df778a22f81259.jpg','slide_286a8d273d9345ee1f4076c0c6eb1e56.jpg','slide_2c297ebee66880d875e379573fb9066d.jpg','slide_37deeaca675b3801016693945202b17f.jpg','slide_393dc6cb3049b20f5d01f6bc9dbea166.jpg','slide_3b07fe314b51825ffa9e3ee071a1617d.jpg','slide_3b308a319417651462a68e797251713c.jpg','slide_3b3e1329a400f0022b20c4f32aefc9ef.jpg','slide_3c65e2a364de29b2918c1e957e106966.jpg','slide_40668a5cd3c80f27a3fdf7e8c6976e05.jpg','slide_42766098a72b2b10f4eca2f27d9c6167.jpg','slide_42d2c442d284e25508492c90c0ccf135.jpg','slide_4470e91222d73fe9ca73944a4e3858b1.jpg','slide_45b0122a92f14e23eb27924cd9788a29.jpg','slide_470962a07504dd810174497d19c97602.jpg','slide_47921c158dfaa8cf0deb9825fbac0e8e.jpg','slide_479c41beca22fc843dcfdce3d218a498.jpg','slide_4b969383decc0d8eb371d8a2b7e21142.jpg','slide_4c964ecf0a268c7e6367557ff94ebf11.jpg','slide_514dc7eb8251253162ac78422cc064ec.jpg','slide_52bf76ddffaef9bac64a96b7ae63ee43.jpg','slide_549c517209e4dda28d3cd4dc4bfdc0f4.jpg','slide_55d0a9598215d0b61d296acb0aa32dd2.jpg','slide_60f970994200413a3f23744c96b4b235.jpg','slide_643185a271d13e3224c343390f8ece72.jpg','slide_67577f086020b862eb5b592e98202171.jpg','slide_68fbc653d47dd9322391d2f38f55259d.jpg','slide_73ce85f775700768d52cc361c21f24f8.jpg','slide_73db77e70a79a48d52cbac8806503e21.jpg','slide_7438b645fff2b9bed8f93a922959b464.jpg','slide_79b4c6c1a1ad12687b6d5c2aee54d8a8.jpg','slide_85bd6f271b56b38c1c87a47c7770ac84.jpg','slide_86b3bd41da65f160322832e4e6aee7aa.jpg','slide_889c2433f68fc8988a3759aa36409ac0.jpg','slide_89f00ef830acbaa51e9725e26d261832.jpg','slide_9243bb83f3129c5df259ed7f7fa83fbe.jpg','slide_92ffb06ab4d93b680b60463aa8e4f252.jpg','slide_969e258973c2b4f0784ba5bd8bac2227.jpg','slide_97578d787a0b67ed4c440b77b669b7f6.jpg','slide_9f5f2a17146cffa5ee9916aba4015aa1.jpg','slide_9f78a30a63dd07ebcadfc882e0d9c295.jpg','slide_a5bd69f28438bcb402f1b16ec81896a7.jpg','slide_a81ac35caffc2045cba27802a931b03d.jpg','slide_a868feb05938d72af1354bd30b07bee3.jpg','slide_aa1e065d9c786875e88ac16f7cc1f870.jpg','slide_b3c5603a6a11ddb45d4d640f47dea551.jpg','slide_b596f2b612e67fa27143831aca815223.jpg','slide_b80fa4d5dcbdf8aea62bfce88a652ecf.jpg','slide_b9bbf34d73a2e1f475199e201d0d81d1.jpg','slide_bb24399a55ebd16877b17cda24f169a7.jpg','slide_bb4a093a13408faeb307cd5991d9b0d7.jpg','slide_bc2473be33d11d9db6dc0c1f8ae319a6.jpg','slide_bd34390ee636755557fca15fea553aa5.jpg','slide_c2bedced583c40136f81349a67da2e2d.jpg','slide_c4c0ad57fa3eb6a5805308275e62d77d.jpg','slide_c6ad907e301b4123737c541ea148a4fc.jpg','slide_cff4159cb999476cd953971cc76b68d1.jpg','slide_d3c60e351e339767347febce816e96e1.jpg','slide_d3dea034b50b8bbf6653e5f90dc2b775.jpg','slide_d4dc30e3f991422cacf4b465163c18d0.jpg','slide_d64bfbcd548caf0baf33a092e844f841.jpg','slide_dc511ffefd3e412f5e41611dbcaa74bd.jpg','slide_dcd12551dfe69508bb2fa9a85cb089b4.jpg','slide_de017d9e893849925270bdf68203ed88.jpg','slide_dfa226ea222756a12b37c4f987158e2d.jpg','slide_e896f11ce97f04bbc6ad679a47925753.jpg','slide_ec44744ab36e8094482d9fd6d0f703b8.jpg','slide_edb274d8c594429b8ccc684d79d771f6.jpg','slide_f4b13edeb1c1db464077eae43dbca3e7.jpg'];
+function fadeIn(e) {
+  e.className = 'mySlides fadeIn';
+}
+function fadeOut(e) {
+  e.className = 'mySlides';
+}
 function preLoadImg() { 
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < imgName.length; i++) {
     var img = new Image(); 
     img.src = './img/' + imgName[i];  
   }
-} 
-
-function carousel() {
-    var i;
-    var length = imgName.length;
-    var x = document.getElementsByClassName("mySlides");
-    myIndex++;
-    if (myIndex >= length) {
-      myIndex = 0;
-      location.reload();
-    }
-    x[0].style.display = "block";
-    x[0].src = './img/' + imgName[myIndex];
-    setTimeout(carousel, 2000); // Change image every 2 seconds
 }
+function carouselFadeInPreload() {
+    imgTags[0].src = './img/' + imgName[0];
+    imgTags[1].src = './img/' + imgName[1];
+}
+function carouselFadeIn() {
+    console.log('on carouselFadeIn');
+    var activeImg = imgTags[myIndex % 2];
+    var inactiveImg = imgTags[(myIndex + 1) % 2];
+    fadeIn(activeImg);
+    fadeOut(inactiveImg);
+    myIndex++;
+    if (myIndex >= imgName.length) {
+        myIndex = 0;
+        carouselFadeInPreload();
+        location.reload();
+    } else {
+        setTimeout(function() {
+            inactiveImg.src = './img/' + imgName[myIndex];
+        }, 1000);
+    }
+}
+
+preLoadImg();
+carouselFadeInPreload();
+setInterval(carouselFadeIn, 3000);
 </script>
 
 </body>
