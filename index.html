@@ -31,7 +31,18 @@
 
 <script>
 var myIndex = 0;
+var imgName = ['1 (2).jpg','94.pic_hd.jpg','DSC_0392.JPG','IMG_2742.JPG','IMG_9423.JPG','huimin-1.jpg','照片IMG_9418.JPG','1.pic_hd.jpg','DSC03520[2].JPG','FullSizeRender 4.jpg','IMG_6712.JPG','IMG_9425.JPG','image1.jpeg','照片IMG_9422.JPG','43.pic_hd.jpg','DSC_0257.JPG','IMG_1573.JPG','IMG_8986.JPG','Victor Zhang.jpeg','partick zhang.jpeg'];
+
+preLoadImg();
+
 carousel();
+
+function preLoadImg() { 
+  for (var i = 0; i < 20; i++) {
+    var img = new Image(); 
+    img.src = './img/' + imgName[i];  
+  }
+} 
 
 function carousel() {
     var i;
@@ -40,7 +51,7 @@ function carousel() {
     myIndex++;
     if (myIndex > length) {myIndex = 1}
     x[0].style.display = "block";
-    x[0].src = './img/' + myIndex + '.jpg';
+    x[0].src = './img/' + imgName[myIndex];
     setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 </script>
